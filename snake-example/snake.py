@@ -50,8 +50,18 @@ close = False
 
 clock = pygame.time.Clock()
 
+font = pygame.font.SysFont('comicsansms', 25)
+
+surface_gameover_text, rect_gameover_text = text_objects("GAME OVER", font, COLOR_WHITE)
+rect_gameover_text.center = ((WIDTH / 2), (HEIGHT / 15))
+
+surface_pause_text, rect_pause_text = text_objects("PAUSE", font, COLOR_WHITE)
+rect_pause_text.center = ((WIDTH / 2), (HEIGHT / 15))
+
 # game main loop
 while not close:
+    
+    screen.fill(COLOR_BLACK)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -89,21 +99,19 @@ while not close:
             for i in range(1, len(snake)):
                 if collision(snake[0], snake[i]):
                     game_over = True
+        else:
+            screen.blit(surface_pause_text, rect_pause_text)
             
         if collision(snake[0], apple_pos):
             apple_pos = on_grid_rand_position()
             snake.append((0, 0))
-
-        screen.fill(COLOR_BLACK)
+        
         screen.blit(apple, apple_pos)
 
         for pos in snake:
             screen.blit(snake_skin, pos)
     else:
-        font = pygame.font.SysFont('comicsansms', 25)
-        surface_text, rect_text = text_objects("GAME OVER", font, COLOR_WHITE)
-        rect_text.center = ((WIDTH / 2), (HEIGHT / 4))
-        screen.blit(surface_text, rect_text)
+        screen.blit(surface_gameover_text, rect_gameover_text)
 
     pygame.display.update()
     clock.tick(30)
