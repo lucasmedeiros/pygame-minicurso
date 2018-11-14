@@ -50,7 +50,7 @@ def collision(c1, c2):
 snake = [(200, 200), (210, 200), (220, 200)]
 
 snake_skin = pygame.Surface((10, 10))
-snake_skin.fill(COLOR_WHITE)
+snake_skin.fill(COLOR_BLACK)
 
 apple = pygame.Surface((10, 10))
 apple.fill(COLOR_RED)
@@ -63,19 +63,19 @@ close = False
 
 clock = pygame.time.Clock()
 
-surface_gameover_text, rect_gameover_text = text_objects("GAME OVER", font, COLOR_WHITE)
+surface_gameover_text, rect_gameover_text = text_objects("GAME OVER", font, COLOR_BLACK)
 rect_gameover_text.center = ((WIDTH / 2), (HEIGHT / 15))
 
-surface_pause_text, rect_pause_text = text_objects("PAUSE", font, COLOR_WHITE)
+surface_pause_text, rect_pause_text = text_objects("PAUSE", font, COLOR_BLACK)
 rect_pause_text.center = ((WIDTH / 2), (HEIGHT / 15))
 
-surface_tryagain_text, rect_tryagain_text = text_objects("[ENTER] PARA TENTAR NOVAMENTE", font, COLOR_WHITE)
+surface_tryagain_text, rect_tryagain_text = text_objects("[ENTER] PARA TENTAR NOVAMENTE", font, COLOR_BLACK)
 rect_tryagain_text.center = ((WIDTH / 2), (HEIGHT / 2))
 
 # game main loop
 while not close:
     
-    screen.fill(COLOR_BLACK)
+    screen.fill(COLOR_WHITE)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
