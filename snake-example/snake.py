@@ -136,7 +136,7 @@ while not close:
         curr_direction = RIGHT
 
     pygame.display.update()
-    clock.tick(30)
+    clock.tick(20)
 
 pygame.quit()
 quit()
