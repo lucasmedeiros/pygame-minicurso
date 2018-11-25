@@ -3,6 +3,8 @@ import random
 import pygame
 from pygame.locals import *
 
+COLOR_WHITE = [255, 255, 255]
+
 class Game:
     screen = None
     screen_size = None
@@ -39,12 +41,13 @@ class Game:
             clock.tick(1000 / dt)
 
             self.handle_events()
-            print self.background
-            self.screen.fill(self.background)
+            self.screen.fill(COLOR_WHITE)
+
+            pygame.display.update()
 
 
 def main(argv):
-    game = Game((300, 300), (255, 255, 255))
+    game = Game((300, 300), COLOR_WHITE)
     game.loop()
 
 if __name__ == "__main__":
