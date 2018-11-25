@@ -11,6 +11,7 @@ class Game:
     background = None
     clock = None
     running = True
+    all_sprites = None
 
     def __init__(self, name, size, bg):
         pygame.init()
@@ -21,6 +22,7 @@ class Game:
         pygame.display.set_caption(name)
         self.clock = pygame.time.Clock()
         self.background = bg
+        self.all_sprites = pygame.sprite.Group()
     
     # processar entrada (eventos)
     def handle_events(self):

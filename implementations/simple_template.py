@@ -28,6 +28,8 @@ def main():
     screen = pygame.display.set_mode(SCREEN_SIZE)
     pygame.display.set_caption("MODELO DE TEMPLATE - MINICURSO DE PYGAME")
 
+    all_sprites = pygame.sprite.Group()
+
     running = True
 
     clock = pygame.time.Clock()
@@ -52,9 +54,11 @@ def main():
                     running = False
 
         # atualizar informações do jogo
+        all_sprites.update()
 
         # desenhar e renderizar
         screen.fill(WHITE)
+        all_sprites.draw()
         pygame.display.flip()
     
     pygame.quit()

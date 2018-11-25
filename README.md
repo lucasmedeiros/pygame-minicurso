@@ -20,6 +20,7 @@ Caso utilize Windows, acesse o site de downloads do pygame clicando [aqui](https
 ## Links úteis
 
 - [pygame.org](https://www.pygame.org/)
+- [opengameart.org](https://opengameart.org/)
 - [Jogo de Damas](https://github.com/LukeHxH/mp_damas)
 - [Getting started with Pygame (Videoaulas)](https://www.youtube.com/watch?v=VO8rTszcW4s)
 - [Tutorial - Introdução à Programação de Jogos em Pygame](https://old.gustavobarbieri.com.br/jogos/jogo/doc/)
