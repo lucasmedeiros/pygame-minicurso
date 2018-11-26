@@ -5,6 +5,23 @@
 import pygame
 from pygame.locals import *
 
+# declaração de constantes
+GAME_NAME = "MODELO DE TEMPLATE - MINICURSO DE PYGAME"
+
+# definindo tamanho para a tela
+WIDTH = 800
+HEIGHT = 600
+
+# definindo velocidade para o loop principal do jogo
+FPS = 30
+
+#definindo cores
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+RED = (255, 0, 0)
+GREEN = (0, 255, 0)
+BLUE = (0, 0, 255)
+
 class Game:
     screen = None
     screen_size = None
@@ -16,7 +33,6 @@ class Game:
     def __init__(self, name, size, bg):
         pygame.init()
         pygame.mixer.init()
-
         self.screen_size = size
         self.screen = pygame.display.set_mode(size)
         pygame.display.set_caption(name)
@@ -41,12 +57,12 @@ class Game:
     
     # atualizar informações do jogo
     def update(self):
-        # TODO ainda não implementado
-        pass
+        self.all_sprites.update()
     
     # desenhar e renderizar
     def draw(self):
         self.screen.fill(self.background)
+        self.all_sprites.draw(self.screen)
         pygame.display.flip()
     
     # laço principal do jogo.
@@ -60,7 +76,7 @@ class Game:
         pygame.quit()
 
 def main():
-    game = Game("MODELO DE TEMPLATE- MINICURSO PYGAME",(800, 600), (255, 255, 255))
+    game = Game(GAME_NAME,(WIDTH, HEIGHT), WHITE)
     game.loop(30)
 
 if __name__ == "__main__":

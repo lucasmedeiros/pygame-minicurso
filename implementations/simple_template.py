@@ -5,10 +5,12 @@
 import pygame
 from pygame.locals import *
 
+# declaração de constantes
+GAME_NAME = "MODELO DE TEMPLATE - MINICURSO DE PYGAME"
+
 # definindo tamanho para a tela
 WIDTH = 800
 HEIGHT = 600
-SCREEN_SIZE = (WIDTH, HEIGHT)
 
 # definindo velocidade para o loop principal do jogo
 FPS = 30
@@ -25,8 +27,8 @@ def main():
     pygame.init()
     pygame.mixer.init()
     
-    screen = pygame.display.set_mode(SCREEN_SIZE)
-    pygame.display.set_caption("MODELO DE TEMPLATE - MINICURSO DE PYGAME")
+    screen = pygame.display.set_mode((WIDTH, HEIGHT))
+    pygame.display.set_caption(GAME_NAME)
 
     all_sprites = pygame.sprite.Group()
 
@@ -58,7 +60,7 @@ def main():
 
         # desenhar e renderizar
         screen.fill(WHITE)
-        all_sprites.draw()
+        all_sprites.draw(screen)
         pygame.display.flip()
     
     pygame.quit()
