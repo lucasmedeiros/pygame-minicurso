@@ -3,7 +3,6 @@ from pygame.locals import *
 
 pygame.init()
 
-# assigning values for useful constants
 WIDTH = 800
 HEIGHT = 600
 
@@ -25,12 +24,10 @@ font = pygame.font.SysFont('comicsansms', 25)
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Minicurso Pygame - Snake")
 
-# creates a unique model for text display
 def text_objects(text, font, color):
 	text_surface = font.render(text, True, color)
 	return text_surface, text_surface.get_rect()
 
-# generates random positions for apples
 def on_grid_rand_position():
     x = random.randint(LOWER_BOUND, UPPER_BOUND_X)
     y = random.randint(LOWER_BOUND, UPPER_BOUND_Y)
@@ -43,7 +40,6 @@ def on_grid_rand_position():
 
     return (x//10 * 10, y//10 * 10)
 
-# checks collision between two cells
 def collision(c1, c2):
     return (c1[0] == c2[0]) and (c1[1] == c2[1])
 
@@ -72,7 +68,6 @@ rect_pause_text.center = ((WIDTH / 2), (HEIGHT / 15))
 surface_tryagain_text, rect_tryagain_text = text_objects("[ENTER] PARA TENTAR NOVAMENTE", font, COLOR_BLACK)
 rect_tryagain_text.center = ((WIDTH / 2), (HEIGHT / 2))
 
-# game main loop
 while not close:
     
     screen.fill(COLOR_WHITE)
@@ -111,7 +106,6 @@ while not close:
             for i in range(len(snake) - 1, 1, -1):
                 snake[i] = (snake[i - 1][0], snake[i - 1][1])
         
-            # detects auto collision
             for i in range(1, len(snake)):
                 if collision(snake[0], snake[i]):
                     game_over = True
