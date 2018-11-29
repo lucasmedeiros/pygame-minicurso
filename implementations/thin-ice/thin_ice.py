@@ -29,8 +29,7 @@ LEVELS_FOLDER = os.path.join(GAME_FOLDER, "Levels")
 SOUNDS_FOLDER = os.path.join(GAME_FOLDER, "Sounds")
 
 LEVEL_NAMES = ["level1", "level2", "level3",
-                "level4", "level5", "level6",
-                "level7", "level8", "level9"]
+                "level4", "level5", "level6"]
 
 EMPTY_SQUARE = pygame.image.load(os.path.join(IMG_FOLDER, "EmptySquare.png"))
 WATER_SQUARE = pygame.image.load(os.path.join(IMG_FOLDER, "Water.png"))
