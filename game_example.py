@@ -21,6 +21,7 @@ class Game:
 
     def __init__(self):
         pygame.init()
+        pygame.mixer.init()
 
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
         pygame.display.set_caption(GAME_NAME)
@@ -44,8 +45,18 @@ class Game:
 
                 if key == pygame.K_ESCAPE:
                     self.running = False
+        
+        self.player.set_speedx(0)
+
+        key_state = pygame.key.get_pressed()
+
+        if key_state[pygame.K_LEFT]:
+            self.player.set_speedx(-20)
+        elif key_state[pygame.K_RIGHT]:
+            self.player.set_speedx(20)
     
     def update(self):
+        
         pygame.display.update()
         self.all_sprites.update()
     
@@ -65,8 +76,13 @@ class Game:
             self.draw()
 
     def run(self):
-        player = Player(GREEN, ((WIDTH / 2), HEIGHT - 100))
-        self.all_sprites.add(player)
+        self.player = Player(GREEN, ((WIDTH / 2), HEIGHT - 100))
+        self.all_sprites.add(self.player)
+
+        pygame.mixer.music.load("music.mp3")
+        pygame.mixer.music.play(-1)
+        pygame.mixer.music.set_volume(0.65)
+
         self.loop()
 
 def main():
