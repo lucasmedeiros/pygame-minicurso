@@ -24,16 +24,16 @@ BLUE = (0, 0, 255)
 
 class Game:
     """
-    classe usada para representar o jogo e todas as suas funcionalidades
+        classe usada para representar o jogo e todas as suas funcionalidades
 
-    Attributes
-    ----------
-    screen : pygame.Surface
-        uma superfície para a tela principal do jogo
-    running : bool
-        valor que representa se o loop está rodando ou não
-    all_sprites : pygame.sprite.Group
-        grupo de sprites utilizados no jogo.
+        Attributes
+        ----------
+        screen : pygame.Surface
+            uma superfície para a tela principal do jogo
+        running : bool
+            valor que representa se o loop está rodando ou não
+        all_sprites : pygame.sprite.Group
+            grupo de sprites utilizados no jogo.
     """
 
     def __init__(self):
