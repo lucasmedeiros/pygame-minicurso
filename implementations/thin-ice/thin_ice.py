@@ -10,7 +10,7 @@ GAME_NAME = "Thin Ice"
 WIDTH = 380
 HEIGHT = 320
 
-FPS = 15
+FPS = 20
 
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
@@ -19,6 +19,8 @@ GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 
 SQUARE_SIZE = 20
+
+SPEED_INCREASE_AMOUNT = 20
 
 GAME_FOLDER = os.path.dirname(__file__)
 IMG_FOLDER = os.path.join(GAME_FOLDER, "Images")
@@ -46,6 +48,7 @@ class Game:
         pygame.display.set_caption(GAME_NAME)
 
         self.running = True
+        self.win = False
         self.all_sprites = pygame.sprite.Group()
 
         self.clock = pygame.time.Clock()
@@ -60,35 +63,49 @@ class Game:
         key_state = pygame.key.get_pressed()
         
         if key_state[pygame.K_RIGHT]:
-            right_x_index = self.player.rect.right // SQUARE_SIZE
+            right_x_index = (self.player.rect.x + SQUARE_SIZE) // SQUARE_SIZE
             right_y_index = self.player.rect.y // SQUARE_SIZE
 
             if self.m[right_y_index][right_x_index] in ["2", "3"]:
-                self.player.set_speed_x(SQUARE_SIZE)
+                self.player.set_speed_x(SPEED_INCREASE_AMOUNT)
+                self.break_ice()
 
         elif key_state[pygame.K_LEFT]:
-            left_x_index = (self.player.rect.left - SQUARE_SIZE) // SQUARE_SIZE
+            left_x_index = (self.player.rect.x - SQUARE_SIZE) // SQUARE_SIZE
             left_y_index = self.player.rect.y // SQUARE_SIZE
 
             if self.m[left_y_index][left_x_index] in ["2", "3"]:
-                self.player.set_speed_x(-SQUARE_SIZE)
+                self.player.set_speed_x(-SPEED_INCREASE_AMOUNT)
+                self.break_ice()
 
         elif key_state[pygame.K_DOWN]:
             down_x_index = self.player.rect.x // SQUARE_SIZE
-            down_y_index = self.player.rect.bottom // SQUARE_SIZE
+            down_y_index = (self.player.rect.y + SQUARE_SIZE) // SQUARE_SIZE
 
             if self.m[down_y_index][down_x_index] in ["2", "3"]:
-                self.player.set_speed_y(SQUARE_SIZE)
+                self.player.set_speed_y(SPEED_INCREASE_AMOUNT)
+                self.break_ice()
 
         elif key_state[pygame.K_UP]:
             up_x_index = self.player.rect.x // SQUARE_SIZE
-            up_y_index = (self.player.rect.top - SQUARE_SIZE) // SQUARE_SIZE
+            up_y_index = (self.player.rect.y - SQUARE_SIZE) // SQUARE_SIZE
 
             if self.m[up_y_index][up_x_index] in ["2", "3"]:
-                self.player.set_speed_y(-SQUARE_SIZE)
+                self.player.set_speed_y(-SPEED_INCREASE_AMOUNT)
+                self.break_ice()
 
     def update(self):
         self.all_sprites.update()
+
+        player_x_index = self.player.rect.x // SQUARE_SIZE
+        player_y_index = self.player.rect.y // SQUARE_SIZE
+
+        if self.m[player_y_index][player_x_index] == "3":
+            self.win = True
+        
+        if self.win:
+            print "parabens!"
+            # TODO ação para quando vencer (passar nível)
 
     def draw(self):
 
@@ -114,7 +131,7 @@ class Game:
             self.handle_events()
             self.update()
             self.draw()
-    
+
     def run(self):
         self.curr_level_index = 0
         self.level_path = os.path.join(LEVELS_FOLDER, LEVEL_NAMES[self.curr_level_index] + ".txt")
@@ -133,6 +150,12 @@ class Game:
 
         self.loop()
         pygame.quit()
+    
+    def break_ice(self):
+        player_x_index = self.player.rect.x // SQUARE_SIZE
+        player_y_index = self.player.rect.y // SQUARE_SIZE
+
+        self.m[player_y_index][player_x_index] = "1"
 
 def main():
     game = Game()
