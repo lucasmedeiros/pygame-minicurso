@@ -17,6 +17,10 @@ RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 
+def text_objects(text, font, color):
+    text_obj = font.render(text, True, color)
+    return text_obj, text_obj.get_rect()
+
 class Game:
 
     def __init__(self):
@@ -56,12 +60,14 @@ class Game:
             self.player.set_speedx(20)
     
     def update(self):
-        
+        self.text, self.text_rect = text_objects("Texto qualquer", self.font, GREEN)
+        self.text_rect.center = ((WIDTH / 2), (HEIGHT / 2))
         pygame.display.update()
         self.all_sprites.update()
     
     def draw(self):
         self.screen.fill(WHITE)
+        self.screen.blit(self.text, self.text_rect)
         self.all_sprites.draw(self.screen)
         pygame.display.flip()
         
@@ -76,6 +82,7 @@ class Game:
             self.draw()
 
     def run(self):
+        self.font = pygame.font.SysFont("comicsans", 60)
         self.player = Player(GREEN, ((WIDTH / 2), HEIGHT - 100))
         self.all_sprites.add(self.player)
 

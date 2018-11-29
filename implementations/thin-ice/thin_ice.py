@@ -132,7 +132,7 @@ class Game:
             self.draw()
 
     def run(self):
-        self.curr_level_index = 0
+        self.curr_level_index = 4
         self.level_path = os.path.join(LEVELS_FOLDER, LEVEL_NAMES[self.curr_level_index] + ".txt")
         self.m = list(map(lambda x:list(x), open(self.level_path, "r").read().splitlines()))
 
