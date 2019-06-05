@@ -18,6 +18,6 @@ Caso utilize Windows, acesse o site de downloads do pygame clicando [aqui](https
 - [Repositório do PyGame no Github](https://github.com/pygame/pygame)
 - [Site com artes de jogos gratuitos](https://opengameart.org/)
 - [Paleta de cores](https://color.adobe.com/pt/create/color-wheel/)
-- [Jogo de Damas em PyGame](https://github.com/LukeHxH/mp_damas)
+- [Jogo de Damas em PyGame](https://github.com/lucasmedeiros/mp_damas)
 - [Getting started with PyGame (Videoaulas)](https://www.youtube.com/watch?v=VO8rTszcW4s)
 - [Tutorial - Introdução à Programação de Jogos em Pygame (PT-BR)](https://old.gustavobarbieri.com.br/jogos/jogo/doc/)
